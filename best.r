@@ -46,5 +46,5 @@ best <- function(input_state, metric) {
   ## orders 1st by metric in col 3, then by alphabetical in col 1
   orderinputstate_vector <- order(inputstate[,3], inputstate[,1]) 
   orderinputstate <- inputstate[orderinputstate_vector, ]
-  #nothingness
+  
 }
