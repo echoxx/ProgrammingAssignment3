@@ -4,7 +4,7 @@ best <- function(input_state, metric) {
   #Reads data from csv
   source <- read.csv("outcome-of-care-measures.csv", na.strings="Not Available", stringsAsFactors=FALSE)
   
-  #Renames columns (easier to work with)
+  #Renames columns of interest (easier to work with)
   names(source)[c(2,7,11,17,23)] <- c("hospital", "state", "heart_attack", "heart_failure", "pneumonia")
   
   #Checks if valid state
@@ -34,7 +34,7 @@ best <- function(input_state, metric) {
   }
   
   #Creates simplified df named "redux"
-  redux <- data.frame(source$hospital, source$state, source[,column_index])
+  redux <- data.frame(source$hospital, source$state, source[,column_index], stringsAsFactors = FALSE)
   names(redux) <- c("hospital", "state", "outcome")
   redux <- redux[complete.cases(redux),] #removes NAs
   
@@ -47,4 +47,6 @@ best <- function(input_state, metric) {
   orderinputstate_vector <- order(inputstate[,3], inputstate[,1]) 
   orderinputstate <- inputstate[orderinputstate_vector, ]
   
+  finaloutput <- list(orderinputstate[1,1], orderinputstate[1,3])
+  return(finaloutput) 
 }
