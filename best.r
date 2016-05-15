@@ -15,16 +15,16 @@ best <- function(input_state, metric) {
   
   #Checks if valid metric
   if ( metric %in% names(source)  == FALSE)  {
-    print("invalid state")
+    print("invalid metric")
     stop()
   } 
   
   
   #Chooses column based on metric request
   column_index <- numeric()
-  if (metric == "heart attack") {
+  if (metric == "heart_attack") {
     column_index <- 11
-  } else if (metric == "heart failure") {
+  } else if (metric == "heart_failure") {
     column_index <- 17
   } else if (metric == "pneumonia") {
     column_index <- 23
